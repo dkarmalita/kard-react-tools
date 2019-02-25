@@ -16,8 +16,8 @@ module.exports = function({ args }={ args:[] }){
     '--config', configFilePath,
     'src',
     '-f', 'table',
-    '--ext', '.js', '--ext', '.jsx'
+    '--ext', '.js', '--ext', '.jsx',
     // '--mode=production',
-    // ...args,
+    ...args,
   ])
 }
