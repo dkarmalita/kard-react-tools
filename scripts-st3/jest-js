@@ -1,0 +1,116 @@
+#!/usr/bin/env node
+/**
+ * @description
+ *   eslint single file runner for Sublime Text 3 build system.
+ *
+ * @version 20181211-1611-alpha
+ * @used
+ *   SublimeText3/data/Packages.WV/User/esfix.sublime-build
+ *
+ * @example (esfix.sublime-build)
+ *  {
+ *    "cmd" : [
+ *      "/Users/kard/SublimeText3/bin/eslint-fix-js",
+ *      "${file}"
+ *    ],
+ *    "selector": "source.js",
+ *  }
+ *
+ * @license
+ *  Copyright (c)
+ *  This source code is licensed under the MIT license
+ *  https://github.com/dkarmalita/react-form-engine/blob/master/LICENSE
+ */
+
+'use strict';
+
+const path = require('path')
+const fs = require('fs');
+
+/* get job config */
+const target = process.argv[2];
+const targetDir = path.dirname(target)
+
+/* extend require path set with standard global Mac one - fix nvm issue of several packages */
+require.main.paths = [
+  '/usr/local/lib/node_modules',
+  ...require.main.paths
+]
+
+/* import dependencies */
+let crossSpawn
+let shell
+
+try {
+  crossSpawn = require('cross-spawn');
+  shell = require('shelljs');
+} catch(e) {
+  console.info('\nPlease inslatt additional dependencies. Shorthand:')
+  console.info('\tnpm i -g cross-spawn shelljs')
+  process.exit(1)
+}
+
+// npx jest __tests__/_example.spec.js
+
+/* main */
+shell.cd( findProjectRoot(targetDir) )
+process.exit(execJest(target));
+
+/* lib */
+function execJest(target){
+  // setTimeout(
+  //   ()=>{
+  //     console.log('Jest Terminated in 1sec')
+  //     process.exit(0)
+  //   }, 1000
+  // )
+  const result = crossSpawn.sync(
+    'npx',
+    ['jest', getTestFor(target)],
+    { stdio: 'inherit' }
+  );
+  if (result.signal) {
+    if (result.signal === 'SIGKILL') {
+      console.log(
+        'The build failed because the process exited too early. ' +
+          'This probably means the system ran out of memory or someone called ' +
+          '`kill -9` on the process.'
+      );
+    } else if (result.signal === 'SIGTERM') {
+      console.log(
+        'The build failed because the process exited too early. ' +
+          'Someone might have called `kill` or `killall`, or the system could ' +
+          'be shutting down.'
+      );
+    }
+    return 1
+  }
+  return result.status
+}
+
+function getTestFor(target){
+
+  const testExts = ['.spec.js', '.test.js']
+
+  let result = testExts.some( ext => target.endsWith(ext) )
+  if( result ) { return target }
+
+
+  const noExtPath = target.replace(/\.[^/.]+$/, "");
+  testExts.some( ext => {
+    const testFile = `${noExtPath}${ext}`
+    if( fs.existsSync(testFile) ){
+      result = testFile;
+      return true;
+    }
+    return false
+  });
+
+  return result
+}
+
+function findProjectRoot( baseDir, acc=[] ){
+  if (fs.existsSync(`${baseDir}/package.json`)){ return baseDir }
+  if( baseDir === '/' ){ return null }
+  return findProjectRoot( path.dirname(baseDir) )
+}
