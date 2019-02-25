@@ -24,6 +24,7 @@ const scripts = {
   eslint: require('../scripts/eslint'),
   jest: require('../scripts/jest'),
   serve: require('../scripts/serve'),
+  transpile: require('../scripts/transpile'),
 }
 
 if(!scripts[script]){
