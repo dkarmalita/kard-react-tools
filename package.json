@@ -8,7 +8,8 @@
     "react-tools": "bin/react-tools.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "esfix": "eslint . --ignore-path .gitignore -f table --ext .js --ext .jsx --fix",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",

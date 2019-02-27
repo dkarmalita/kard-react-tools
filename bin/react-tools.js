@@ -1,36 +1,34 @@
 #!/usr/bin/env node
 
-'use strict';
-
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', (err) => {
   throw err;
 });
 
-const path = require('path');
-const chalk = require('chalk')
+const chalk = require('chalk');
 
 const { tools } = require('../utils/resolver');
+
 const packageJson = tools.require('package.json');
 
 const log = require('../utils/logger');
-log.info(chalk.cyan(`${packageJson.name} [ver. ${packageJson.version}]`))
 
-const script = process.argv[2]
+log.info(chalk.cyan(`${packageJson.name} [ver. ${packageJson.version}]`));
+
+const script = process.argv[2];
 const args = process.argv.slice(3);
-log.info(`script: '${script}',`, `args:`, args)
+log.info(`script: '${script}',`, 'args:', args);
 
 const scripts = {
-  build: require('../scripts/build'),
-  eslint: require('../scripts/eslint'),
-  jest: require('../scripts/jest'),
-  serve: require('../scripts/serve'),
-  transpile: require('../scripts/transpile'),
+  build: tools.require('scripts/build'),
+  eslint: tools.require('scripts/eslint'),
+  jest: tools.require('scripts/jest'),
+  serve: tools.require('scripts/serve'),
+  transpile: tools.require('scripts/transpile'),
+};
+
+if (!scripts[script]) {
+  log.error('Unknown script:', chalk.cyan(`${script}`));
+  process.exit();
 }
 
-if(!scripts[script]){
-  log.error('Unknown script:', chalk.cyan(`${script}`))
-  process.exit()
-}
-
-scripts[script]({args})
-
+scripts[script]({ args });
