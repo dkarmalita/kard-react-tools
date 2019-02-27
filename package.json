@@ -9,8 +9,7 @@
   },
   "scripts": {
     "esfix": "eslint . --ignore-path .gitignore -f table --ext .js --ext .jsx --fix",
-    "test": "jest",
-    "tsc": "tsc"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
