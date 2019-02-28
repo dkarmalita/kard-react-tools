@@ -2,6 +2,7 @@
 const path = require('path');
 const log = require('./logger');
 
+// Add tools root directory to resolver
 require.main.paths = [
   path.join(__dirname, '..'),
   ...require.main.paths,
@@ -25,10 +26,9 @@ function createResolver(basePath) {
           return require.resolve(params[params.length - 1]);
         } catch (ex) {
           log.error('Unable to resolve:', params);
-          process.exit(0);
         }
       }
-      return null;
+      return process.exit(0);
     },
 
     require(...params) {
@@ -39,10 +39,9 @@ function createResolver(basePath) {
           return require(params[params.length - 1]);
         } catch (ex) {
           log.error('Unable to require:', params);
-          process.exit(0);
         }
       }
-      return null;
+      return process.exit(0);
     },
   };
 }
