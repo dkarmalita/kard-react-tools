@@ -3,7 +3,7 @@ const { tools } = require('./utils/resolver');
 const resolve = moduleName => tools.resolve('node_modules', moduleName);
 
 module.exports = (api) => {
-  if (api.cache) { api.cache(true); }
+  if (!!api && api.cache) { api.cache(true); }
   // api.version
   // Returns Babel's core version.
   // api.env()
