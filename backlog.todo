@@ -1,0 +1,6 @@
+ ☐ [add] stylelint
+ ☐ [improve] simplify webpack.config
+ ☐ [doc] readme
+ ☐ [add] project-wide config (in package.json or tools.config)
+ ☐ [insure] browserlist is supported by all of the tools
+ ☐ [add] sass transpiling script
