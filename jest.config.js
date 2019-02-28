@@ -33,7 +33,7 @@ module.exports = {
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': tools.resolve('utils/babelTransform.js'),
     '^.+\\.(css|scss)$': tools.resolve('utils/cssTransform.js'),
-    '^(?!.*\\.(js|jsx|mjs|json)$)': tools.resolve('utils/fileTransform.js'),
+    '^(?!.*\\.(js|jsx|mjs|css|scss|json)$)': tools.resolve('utils/fileTransform.js'),
   },
   verbose: true,
 };
