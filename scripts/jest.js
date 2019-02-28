@@ -8,7 +8,7 @@ const configFilePath = tools.resolve('config/jest.config');
 
 // eslint-disable-next-line func-names
 module.exports = function ({ args } = { args: [] }) {
-  const app = tools.resolve('node_modules/.bin/jest');
+  const app = tools.resolve('.bin/jest');
   return npx([
     app,
     `--config=${configFilePath}`,

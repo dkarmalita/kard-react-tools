@@ -27,7 +27,6 @@ function createResolverA(basePath) {
           return require.resolve(params[params.length - 1]);
         } catch (e) {
           console.log('resolve err >>>', params)
-          process.exit(0)
         }
       }
       return null
@@ -40,7 +39,6 @@ function createResolverA(basePath) {
           return require(params[params.length - 1]);
         } catch (e) {
           console.log('require err >>>', params)
-          process.exit(0)
         }
       }
       return null
@@ -51,7 +49,9 @@ function createResolverA(basePath) {
 const target = createResolver(process.cwd());
 const tools = createResolverA(path.join(__dirname, '..'));
 
-module.exports = {
-  target, // is the project which contains the packade in its devDependencies
-  tools,  // is this package itself
-}
+module.exports = function ({ args } = { args: [] }) {
+  console.log('>>>>> DEV <<<<<<');
+  console.log('TARGET <<<<<<', target.fullPath());
+  console.log('TOOLS <<<<<<', tools.fullPath());
+  console.log(require.main.paths);
+};

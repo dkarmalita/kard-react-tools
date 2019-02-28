@@ -19,6 +19,7 @@ const args = process.argv.slice(3);
 log.info(`script: '${script}',`, 'args:', args);
 
 const scripts = {
+  _dev: tools.require('scripts/_dev'),
   build: tools.require('scripts/build'),
   eslint: tools.require('scripts/eslint'),
   jest: tools.require('scripts/jest'),

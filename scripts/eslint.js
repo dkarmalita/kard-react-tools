@@ -8,7 +8,7 @@ const configFilePath = tools.resolve('config/eslint.config');
 
 // eslint-disable-next-line func-names
 module.exports = function ({ args } = { args: [] }) {
-  const app = tools.resolve('node_modules/.bin/eslint');
+  const app = tools.resolve('.bin/eslint');
   return npx([
     app,
     '--config', configFilePath,

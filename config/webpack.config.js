@@ -98,7 +98,7 @@ const buildPlugins = () => [
   }),
 
   new CleanWebpackPlugin([distPath], {
-    root: __dirname, //  Useful when relative references are used in array
+    root: target.fullPath(), //  Useful when relative references are used in array
     verbose: true,
     dry: false,
     //  exclude: ['shared.js']

@@ -1,7 +1,7 @@
 {
   "name": "@kard/react-tools",
   "logid": "@kard/rdt",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "main": "bin/react-tools.js",
   "bin": {
@@ -9,6 +9,7 @@
   },
   "scripts": {
     "esfix": "eslint . --ignore-path .gitignore -f table --ext .js --ext .jsx --fix",
+    "publish": "npm publish --access public",
     "test": "jest"
   },
   "keywords": [],

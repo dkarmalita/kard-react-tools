@@ -1,17 +1,17 @@
 process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
 
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const chalk = require('chalk');
+const { tools, target } = require('../utils/resolver');
 
-const log = require('../utils/logger');
+const webpack = tools.require('webpack');
+const WebpackDevServer = tools.require('webpack-dev-server');
+const chalk = tools.require('chalk');
 
-const { target } = require('../utils/resolver');
+const log = tools.require('utils/logger');
 
 const packageJson = target.require('package.json');
 
-const configFactory = require('../config/webpack.config');
+const configFactory = tools.require('config/webpack.config');
 
 const devserverConfigCustom = packageJson.devServer || {};
 

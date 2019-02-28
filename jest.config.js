@@ -5,7 +5,7 @@ const { target, tools } = require('./utils/resolver');
 
 module.exports = {
   clearMocks: true,
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: [
     '**/src/**/*.{js,jsx}',
   ],
