@@ -277,11 +277,5 @@ module.exports = function (
     },
   };
 
-  return new Promise((resolve) => {
-    // console.log('timeout start')
-    // setTimeout(() => {
-    // console.log('timeout end')
-    resolve(config);
-    // }, 500);
-  });
+  return new Promise(resolve => resolve(config));
 };

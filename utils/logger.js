@@ -1,8 +1,7 @@
 const path = require('path');
 const moment = require('moment');
-const { tools } = require('./resolver');
 
-const packageJson = tools.require('package.json');
+const packageJson = require('../package.json');
 
 /* eslint-disable no-underscore-dangle */
 module.exports = {
