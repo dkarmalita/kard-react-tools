@@ -1,7 +1,7 @@
 // const fs = require('fs');
 // const path = require('path');
 
-const { target, tools } = require('../utils/resolver');
+const { target, tools } = require('./utils/resolver');
 // const packageJson = target.require('package.json');
 
 const ofProject = rPath => target.fullPath(rPath);
@@ -37,7 +37,7 @@ const packageJsonPath = ofProject('/package.json');
 const distPath = ofProject('/dist');
 const htmlTemplatePath = ofProject('/src/index.ejs');
 
-const createBabelConfig = tools.require('config/babel.config');
+const createBabelConfig = tools.require('babel.config');
 
 const stats = {
   assets: true,

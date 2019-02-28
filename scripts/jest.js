@@ -4,7 +4,7 @@ process.env.NODE_ENV = 'production';
 const npx = require('../utils/npx');
 const { tools } = require('../utils/resolver');
 
-const configFilePath = tools.resolve('config/jest.config');
+const configFilePath = tools.resolve('jest.config');
 
 // eslint-disable-next-line func-names
 module.exports = function ({ args } = { args: [] }) {

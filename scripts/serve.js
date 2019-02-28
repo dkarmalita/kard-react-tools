@@ -11,7 +11,7 @@ const log = tools.require('utils/logger');
 
 const packageJson = target.require('package.json');
 
-const configFactory = tools.require('config/webpack.config');
+const configFactory = tools.require('webpack.config');
 
 const devserverConfigCustom = packageJson.devServer || {};
 
