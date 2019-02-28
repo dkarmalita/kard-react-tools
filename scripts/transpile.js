@@ -1,9 +1,9 @@
 process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 
-const npx = require('../utils/npx');
 const { tools } = require('../utils/resolver');
 
+const npx = tools.require('utils/npx');
 const babelPreset = tools.resolve('utils/babel-preset-tools');
 
 // eslint-disable-next-line func-names

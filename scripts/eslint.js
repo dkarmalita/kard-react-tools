@@ -3,7 +3,7 @@ process.env.NODE_ENV = 'production';
 
 const { tools } = require('../utils/resolver');
 
-const npx = tools.require('../utils/npx');
+const npx = tools.require('utils/npx');
 const configFilePath = tools.resolve('.eslintrc');
 
 // eslint-disable-next-line func-names

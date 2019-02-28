@@ -1,9 +1,9 @@
 process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 
-const npx = require('../utils/npx');
 const { tools } = require('../utils/resolver');
 
+const npx = tools.require('utils/npx');
 const configFilePath = tools.resolve('jest.config');
 
 // eslint-disable-next-line func-names
