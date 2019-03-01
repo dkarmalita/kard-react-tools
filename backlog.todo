@@ -1,8 +1,9 @@
- ☐ [add] stylelint
+ ☐ [add][stylelint] stylelint
  ☐ [improve] simplify webpack.config
  ☐ [doc] readme
  ☐ [add] project-wide config (in package.json or tools.config)
  ☐ [insure] browserlist is supported by all of the tools
  ☐ [add] sass transpiling script
  ☐ [improve] add 'files' field to package.json
- ☐ [add] init script (tamplate population)
+ ☐ [add][init] init script (tamplate population)
+ ☐ [fix][eslint] remove .gitignore absence error
