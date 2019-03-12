@@ -9,15 +9,14 @@ const chalk = tools.require('chalk');
 
 const log = tools.require('utils/logger');
 
-const packageJson = target.require('package.json');
-
 const configFactory = tools.require('webpack.config');
-
-const devserverConfigCustom = packageJson.devServer || {};
 
 module.exports = () => configFactory(null, { mode: 'development' })
   .then((config) => {
     const devserverConfig = config.devServer || {};
+
+    const packageJson = target.require('package.json');
+    const devserverConfigCustom = packageJson.devServer || {};
 
     const host = devserverConfigCustom.host || devserverConfig.host || '0.0.0.0';
     const port = devserverConfigCustom.port || devserverConfig.port || 3000;
