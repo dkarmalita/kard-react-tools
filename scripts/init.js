@@ -1,9 +1,10 @@
 const path = require('path')
+const log = require('../utils/logger');
 // const shell = require('shelljs');
 // shell.ln('-s', `${process.cwd()}/dist/apps`, `${process.cwd()}/dist/themes/gmotrading/apps`)
 
 module.exports = function main(args){
-  log.d('script got the args:', args)
-  log.d('source path',path.join(process.env.PWD, 'templates/dev2'))
-  log.d('destination path',process.env.PWD)
+  log.info('script got the args:', args)
+  log.info('source path',path.join(process.env.PWD, 'templates/default'))
+  log.info('destination path',process.env.PWD)
 }
