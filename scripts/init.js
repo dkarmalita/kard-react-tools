@@ -1,6 +1,8 @@
 const path = require('path')
+const shell = require('shelljs');
 const log = require('../utils/logger');
-// const shell = require('shelljs');
+const crossSpawn = require('../utils/crossSpawn');
+console.log(crossSpawn)
 // shell.ln('-s', `${process.cwd()}/dist/apps`, `${process.cwd()}/dist/themes/gmotrading/apps`)
 
 module.exports = function main(args){
