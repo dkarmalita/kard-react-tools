@@ -34,12 +34,12 @@ module.exports = function main({ args }) {
       return pathExists(dst);
     })
     .then((exists) => {
-      if (!exists) {
-        shell.cp('-R', `${src}/`, dst);
-      } else {
+      if (exists) {
         log.error('unable create project');
         log.error(`folder ${dst} exists!`);
         process.exit(0);
+      } else {
+        shell.cp('-R', `${src}/`, dst);
       }
     });
 };
