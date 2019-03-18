@@ -7,3 +7,5 @@
  ☐ [improve] add 'files' field to package.json
  ☐ [add][init] init script (tamplate population)
  ☐ [fix][eslint] remove .gitignore absence error
+ ☐ [add] templates config
+ ☐ [add] templates post-copy process (npm i, package.json update)
