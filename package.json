@@ -1,7 +1,7 @@
 {
   "name": "@kard/react-tools",
   "logid": "@kard/rdt",
-  "version": "0.2.3",
+  "version": "0.2.3-alpha.01",
   "description": "",
   "main": "bin/react-tools.js",
   "bin": {
