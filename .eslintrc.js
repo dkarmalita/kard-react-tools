@@ -4,6 +4,7 @@ module.exports = {
   extends: 'airbnb',
   parser: 'babel-eslint',
   parserOptions: createConfig(),
+  /* babel-eslint config
+     ref: https://github.com/babel/babel-eslint#additional-parser-configuration
+   */
 };
-
-console.log(require('eslint-config-airbnb'))
