@@ -7,4 +7,8 @@ module.exports = {
   /* babel-eslint config
      ref: https://github.com/babel/babel-eslint#additional-parser-configuration
    */
+  env: {
+    browser: true,
+    node: true
+  }
 };
