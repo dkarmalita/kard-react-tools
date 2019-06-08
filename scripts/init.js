@@ -9,7 +9,7 @@ const pathExists = tools.require('path-exists');
 
 module.exports = function main({ args }) {
   log.info('script got the args:', args);
-  log.info('source path', path.join(process.env.PWD, 'templates/default'));
+  log.info('source path', path.join(process.env.PWD, `templates/${args[1]}`));
   log.info('destination path', process.env.PWD);
 
   const targetFolderName = args[0];
