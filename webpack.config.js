@@ -155,7 +155,7 @@ module.exports = function (
       rules: [
 
         {
-          test: /\.tsx?$/,
+          test: /\.(ts|tsx)?$/,
           exclude: /node_modules/,
           use: [
             {
