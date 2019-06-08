@@ -16,6 +16,7 @@ module.exports = (api) => {
         },
       ],
       resolve('@babel/preset-react'),
+      resolve('@babel/preset-typescript'),
     ],
     plugins: [
       [resolve('@babel/plugin-proposal-decorators'), { legacy: true }],

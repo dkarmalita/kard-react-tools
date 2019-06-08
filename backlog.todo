@@ -9,3 +9,5 @@
  ☐ [fix][eslint] remove .gitignore absence error
  ☐ [add] templates config
  ☐ [add] templates post-copy process (npm i, package.json update)
+ ☐ [add] typescript support to transpile
+ ☐ [add] typescript support to webpack

@@ -1,0 +1,25 @@
+{
+  "name": "CSSTransitionGroup",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-tools serve",
+    "build": "react-tools build",
+    "eslint": "react-tools eslint",
+    "esfix": "react-tools eslint --fix",
+    "transpile": "react-tools transpile --watch",
+    "test": "react-tools jest",
+    "jest:config": "react-tools jest --showConfig"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@kard/react-tools": "^0.2.3"
+  },
+  "dependencies": {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  }
+}

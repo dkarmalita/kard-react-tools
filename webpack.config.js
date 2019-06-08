@@ -21,6 +21,8 @@ const cssLoader = resolveNM('css-loader');
 const postcssLoader = resolveNM('postcss-loader');
 const sassLoader = resolveNM('sass-loader');
 const babelLoader = resolveNM('babel-loader');
+// const tsLoader = resolveNM('ts-loader');
+const tsLoader = resolveNM('awesome-typescript-loader');
 const urlLoader = resolveNM('url-loader');
 const fileLoader = resolveNM('file-loader');
 
@@ -38,6 +40,7 @@ const distPath = ofProject('/dist');
 const htmlTemplatePath = ofProject('/src/index.ejs');
 
 const createBabelConfig = tools.require('babel.config');
+const babelConfig = createBabelConfig(resolveNM);
 
 const stats = {
   assets: true,
@@ -152,11 +155,29 @@ module.exports = function (
       rules: [
 
         {
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: babelLoader,
+              options: babelConfig,
+            },
+            {
+              loader: tsLoader,
+              options: {
+                transpileOnly: true,
+                configFileName: tools.resolve('tsconfig.json'),
+              },
+            },
+          ],
+        },
+
+        {
           test: /\.(js|jsx)$/,
           exclude: [/node_modules/],
           use: [{
             loader: babelLoader,
-            options: createBabelConfig(resolveNM), // babelConfig
+            options: babelConfig,
           }],
         },
 
@@ -229,7 +250,7 @@ module.exports = function (
     },
 
     resolve: {
-      extensions: ['*', '.js', '.jsx', '.scss'],
+      extensions: ['*', '.ts', '.tsx', '.js', '.jsx', '.scss'],
       modules,
       mainFields: [
         'module',
