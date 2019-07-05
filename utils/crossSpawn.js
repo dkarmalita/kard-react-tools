@@ -1,7 +1,7 @@
 const spawn = require('cross-spawn');
 const log = require('./logger');
 
-module.exports = function crossSpawn(app, args=[]) {
+module.exports = function crossSpawn(app, args = []) {
   const result = spawn.sync(
     app,
     args,

@@ -1,6 +1,8 @@
 /* eslint-disable global-require, import/no-dynamic-require, react/no-this-in-sfc */
 const path = require('path');
-const log = require('./logger');
+
+/* eslint-disable-next-line no-console */
+const log = { error: console.log }; // log = ()=>{}//require('./logger');
 
 // Add tools root directory to resolver
 require.main.paths = [
@@ -38,7 +40,7 @@ function createResolver(basePath) {
         try {
           return require(params[params.length - 1]);
         } catch (ex) {
-          log.error('Unable to require:', params);
+          log.error('[resolver] Unable to require:', params);
         }
       }
       return process.exit(0);
@@ -46,7 +48,7 @@ function createResolver(basePath) {
   };
 }
 
-const target = createResolver(process.cwd());
+const target = createResolver(process.cwd()); //  path.resolve('./')
 const tools = createResolver(path.join(__dirname, '..'));
 
 module.exports = {

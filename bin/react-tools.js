@@ -1,21 +1,17 @@
 #!/usr/bin/env node
 
-process.on('unhandledRejection', (err) => {
-  throw err;
-});
+// setup the whole global envirament context for all of the scripts used.
+require('../lib/context');
 
-const chalk = require('chalk');
+const {
+  tools, script, args, logger, chalk,
+} = global.context;
 
-const { tools } = require('../utils/resolver');
+const { packageJson } = tools;
 
-const packageJson = tools.require('package.json');
-
-const log = require('../utils/logger');
+const log = logger();
 
 log.info(chalk.cyan(`${packageJson.name} [ver. ${packageJson.version}]`));
-
-const script = process.argv[2];
-const args = process.argv.slice(3);
 log.info(`script: '${script}',`, 'args:', args);
 
 const scripts = {

@@ -1,10 +1,13 @@
-const path = require('path');
-const moment = require('moment');
+const {
+  tools, moment, // , script, args, logger, chalk,
+} = global.context;
 
-const packageJson = require('../package.json');
+const path = tools.require('path');
+const { packageJson } = tools;
 
 /* eslint-disable no-underscore-dangle */
-module.exports = {
+
+const createLogger = () => ({
   get _color() {
     // cheatsheet: https://stackoverflow.com/a/41407246
     return {
@@ -22,4 +25,22 @@ module.exports = {
   help(...args) { this._log(`${this._color.fgGreen}HELP${this._color.reset}`, ...args); },
   info(...args) { this._log(`${this._color.fgBlue}INF${this._color.reset}`, ...args); },
   warn(...args) { this._log(`${this._color.fgYellow}WARN${this._color.reset}`, ...args); },
+});
+
+/* eslint-disable no-underscore-dangle */
+module.exports = createLogger();
+module.exports.createLogger = createLogger;
+
+/* eslint-disable no-unused-vars */
+const level = {
+  all: 'ALL', // All levels including custom levels.
+  debug: 'DEBUG', // Designates fine-grained informational events that are most useful to debug an application.
+  info: 'INFO', //  Designates informational messages that highlight the progress of the application at coarse-grained level.
+  warn: 'WARN', //  Designates potentially harmful situations.
+  errror: 'ERROR', // Designates error events that might still allow the application to continue running.
+  fatal: 'FATAL', // Designates very severe error events that will presumably lead the application to abort.
+  off: 'OFF', // The highest possible rank and is intended to turn off logging.
 };
+let _currentLevel = level.all;
+const setLevel = (lvl) => { _currentLevel = lvl; };
+const log = {};
