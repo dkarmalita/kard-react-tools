@@ -6,50 +6,6 @@ const path = tools.require('path');
 const { packageJson } = tools;
 
 /* eslint-disable no-underscore-dangle, max-len */
-
-const createLogger = () => ({
-  get _color() {
-    // cheatsheet: https://stackoverflow.com/a/41407246
-    return {
-      reset: '\x1b[0m',
-      fgBlue: '\x1b[34m',
-      fgGreen: '\x1b[32m',
-      fgRed: '\x1b[31m',
-      fgYellow: '\x1b[33m',
-    };
-  },
-  get _logid() { return packageJson.logid || packageJson.name || path.basename(process.argv[1]); },
-  _log(id, ...args) { this._text(`${this._color.fgBlue}${this._logid}${this._color.reset} [${moment().format('HH:MM:ss.SSS')} ${id}]`, ...args); },
-  _text(...args) { console.log(...args); }, // eslint-disable-line no-console
-  error(...args) { this._log(`${this._color.fgRed}ERR${this._color.reset}`, ...args); },
-  help(...args) { this._log(`${this._color.fgGreen}HELP${this._color.reset}`, ...args); },
-  info(...args) { this._log(`${this._color.fgBlue}INF${this._color.reset}`, ...args); },
-  warn(...args) { this._log(`${this._color.fgYellow}WARN${this._color.reset}`, ...args); },
-});
-
-/* eslint-disable no-unused-vars */
-// https://www.tutorialspoint.com/log4j/log4j_logging_levels.htm
-// const level = {
-//   all: 'ALL', // All levels including custom levels.
-//   debug: 'DEBUG', // Designates fine-grained informational events that are most useful to debug an application.
-//   info: 'INFO', //  Designates informational messages that highlight the progress of the application at coarse-grained level.
-//   warn: 'WARN', //  Designates potentially harmful situations.
-//   errror: 'ERROR', // Designates error events that might still allow the application to continue running.
-//   fatal: 'FATAL', // Designates very severe error events that will presumably lead the application to abort.
-//   off: 'OFF', // The highest possible rank and is intended to turn off logging.
-// };
-// let _currentLevel = level.all;
-// const setLevel = (lvl) => { _currentLevel = lvl; };
-// const log = {};
-
-// 1. we have several log levels
-// debug, info, warn, error, fatal
-// 2. each log level gas an id. each next id is the precious one + 100
-// debug:500, info:400, warn:300, error:200, fatal: 100
-// 3. also ve have logLevel global flag which shows the max level of log to be enebled. logLevel === 0 - no output alloved
-// 4. exceptthe standsrd levels, some custom levels can be implemented too
-// addLogLevel(name, level)
-
 const color = {
   reset: '\x1b[0m',
 
@@ -85,7 +41,7 @@ const color = {
 
 const _createLogger = () => {
   let logLevel = 400; // default is 400
-  const logId = packageJson.logid || packageJson.name || path.basename(process.argv[1]);
+  const logId = `${color.FgBlue}${packageJson.logid || packageJson.name || path.basename(process.argv[1])}${color.reset}`;
   const result = {
     get logId() { return logId; },
     get logLevel() { return logLevel; },
