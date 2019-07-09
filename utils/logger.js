@@ -39,37 +39,89 @@ const color = {
 };
 
 
-const _createLogger = () => {
+const createLogger = () => {
+  /**
+   * logLevel - private variable keeps the currently set logLevel
+   * @type {Number}
+   */
   let logLevel = 400; // default is 400
+
+  /**
+   * logId - private variable contains the currently used log id (clause before data/type breckets)
+   * @type {String}
+   */
   const logId = `${color.FgBlue}${packageJson.logid || packageJson.name || path.basename(process.argv[1])}${color.reset}`;
-  const result = {
+
+  /**
+   * logMessage - private function which actually performs the real console output.
+   * Called in context of the created logger
+   * @param  {String}   id   - id og the logger to use
+   * @param  {...Any}   args - arguments to put to console
+   * @return {Void}
+   */
+  function logMessage(id, ...args) {
+    const { config } = this[id];
+    if (config.level <= this.logLevel) {
+      const pre = `${this.logId} [${moment().format('HH:MM:ss.SSS')} ${config.color}${id}${color.reset}]`;
+      // eslint-disable-next-line no-console
+      console.log(`${pre}`, ...args);
+    }
+  }
+
+  /**
+   * logger - the base of the creating logger
+   * @type {Object}
+   */
+  const logger = {
+
+    /**
+     * logId - getter which return the curently used logger id
+     * @return {String} - the curently used logger id
+     */
     get logId() { return logId; },
+
+    // return the currently used log level. Default is 400
+    /**
+     * logLevel - getter returns the currently set logLevel (max level of log output)
+     * @return {Number} [description]
+     */
     get logLevel() { return logLevel; },
+
+    /**
+     * setLogLevel - logLevel setter
+     * @param {Number} val - new logLevel to set
+     */
     setLogLevel(val) { logLevel = val; },
-    logMessage(id, ...args) {
-      const { config } = this[id];
-      if (config.level <= this.logLevel) {
-        const pre = `${this.logId} [${moment().format('HH:MM:ss.SSS')} ${config.color}${id}${color.reset}]`;
-        // eslint-disable-next-line no-console
-        console.log(`${pre}`, ...args);
-      }
-    },
+
+    /**
+     * addLogLevel - public method which allows to add custom levels to the logger
+     * @param {String} id    - id of the custom level
+     * @param {Numbet} level - level value
+     * @param {String} clr   - colos string acceptable inthe console output
+     */
     addLogLevel(id, level, clr = color.FgBlue) {
-      this[id] = (...x) => this.logMessage(id, ...x);
+      this[id] = (...x) => logMessage.call(this, id, ...x);
       this[id].config = { level, color: clr };
     },
   };
-  result.addLogLevel('debug', 500, color.FgMagenta);
-  result.addLogLevel('info', 400, color.FgGreen);
-  result.addLogLevel('warn', 300, color.FgYellow);
-  result.addLogLevel('error', 200, color.FgRed);
-  result.addLogLevel('fatal', 100, color.FgRed + color.Bright);
-  return result;
+
+  /**
+   * Standard logger methods initialization
+   */
+  logger.addLogLevel('debug', 500, color.FgMagenta);
+  logger.addLogLevel('info', 400, color.FgGreen);
+  logger.addLogLevel('warn', 300, color.FgYellow);
+  logger.addLogLevel('error', 200, color.FgRed);
+  logger.addLogLevel('fatal', 100, color.FgRed + color.Bright);
+
+  return logger;
 };
 
-const _logger = _createLogger();
 
 /* examples */
+
+// const _logger = createLogger();
+// console.log(_logger);
 
 // _logger.fatal('fatal');
 // _logger.error('error');
@@ -77,13 +129,13 @@ const _logger = _createLogger();
 // _logger.info('info');
 // _logger.debug('debug');
 
-_logger.addLogLevel('help', 450, color.FgBlue);
+// _logger.addLogLevel('help', 450, color.FgBlue);
 // _logger.help('help NO OUTPUT');
 
-_logger.setLogLevel(500);
-_logger.help('help');
-_logger.debug('Fuck!');
+// _logger.setLogLevel(500);
+// _logger.help('help');
+// _logger.debug('Fuck!');
 
 /* eslint-disable no-underscore-dangle */
-module.exports = _createLogger();
-module.exports.createLogger = _createLogger;
+module.exports = createLogger();
+module.exports.createLogger = createLogger;
