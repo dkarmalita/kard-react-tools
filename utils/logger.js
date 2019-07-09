@@ -38,19 +38,24 @@ const color = {
   BgWhite: '\x1b[47m',
 };
 
+const logIdDefault = packageJson.logid || packageJson.name || path.basename(process.argv[1]);
 
-const createLogger = () => {
+const createLogger = ({
+  logId = logIdDefault, // default log id to use
+  logIdColor = color.FgBlue, // defaukt log id color to use
+  logLevel = 400, // default logLevel to set at the start
+} = {}) => {
   /**
    * logLevel - private variable keeps the currently set logLevel
    * @type {Number}
    */
-  let logLevel = 400; // default is 400
+  let _logLevel = logLevel; // default is 400
 
   /**
    * logId - private variable contains the currently used log id (clause before data/type breckets)
    * @type {String}
    */
-  const logId = `${color.FgBlue}${packageJson.logid || packageJson.name || path.basename(process.argv[1])}${color.reset}`;
+  let _logId = logId;
 
   /**
    * logMessage - private function which actually performs the real console output.
@@ -61,8 +66,9 @@ const createLogger = () => {
    */
   function logMessage(id, ...args) {
     const { config } = this[id];
+    const logIdString = `${logIdColor}${this.logId}${color.reset}`;
     if (config.level <= this.logLevel) {
-      const pre = `${this.logId} [${moment().format('HH:MM:ss.SSS')} ${config.color}${id}${color.reset}]`;
+      const pre = `${logIdString} [${moment().format('HH:MM:ss.SSS')} ${config.color}${id}${color.reset}]`;
       // eslint-disable-next-line no-console
       console.log(`${pre}`, ...args);
     }
@@ -78,20 +84,28 @@ const createLogger = () => {
      * logId - getter which return the curently used logger id
      * @return {String} - the curently used logger id
      */
-    get logId() { return logId; },
+    get logId() { return _logId; },
+    set logId(val) { _logId = val; },
 
-    // return the currently used log level. Default is 400
     /**
      * logLevel - getter returns the currently set logLevel (max level of log output)
+     * Default is 400
      * @return {Number} [description]
      */
-    get logLevel() { return logLevel; },
+    get logLevel() { return _logLevel; },
 
     /**
      * setLogLevel - logLevel setter
      * @param {Number} val - new logLevel to set
      */
-    setLogLevel(val) { logLevel = val; },
+    set logLevel(val) { _logLevel = val; },
+
+    /**
+     * getColor - getter returns the color string by it's id
+     * @param  {String} id - color id (Bright, FgRed, BgGreen, etc.)
+     * @return {String} color prefix value
+     */
+    getColor(id) { return color[id]; },
 
     /**
      * addLogLevel - public method which allows to add custom levels to the logger
@@ -132,7 +146,7 @@ const createLogger = () => {
 // _logger.addLogLevel('help', 450, color.FgBlue);
 // _logger.help('help NO OUTPUT');
 
-// _logger.setLogLevel(500);
+// _logger.logLevel = 500;
 // _logger.help('help');
 // _logger.debug('Fuck!');
 
