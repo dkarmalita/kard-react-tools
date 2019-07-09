@@ -63,8 +63,8 @@ module.exports = () => {
 // console.log(path.join(__dirname, '..')) // tools.project.path
 const { tools } = global.context
 
-const getConfig = tools.require('utils/getConfig')
-console.log(getConfig)
-getConfig()
+// const getConfig = tools.require('utils/getConfig')
+// console.log(getConfig)
+// getConfig()
 
 }
