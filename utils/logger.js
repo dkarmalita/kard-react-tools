@@ -151,5 +151,4 @@ const createLogger = ({
 // _logger.debug('Fuck!');
 
 /* eslint-disable no-underscore-dangle */
-module.exports = createLogger();
-module.exports.createLogger = createLogger;
+module.exports = createLogger;

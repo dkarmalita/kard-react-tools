@@ -4,12 +4,14 @@
 require('../lib/context');
 
 const {
-  tools, script, args, logger, chalk,
+  args,
+  chalk,
+  log,
+  script,
+  tools,
 } = global.context;
 
 const { packageJson } = tools;
-
-const log = logger();
 
 log.info(chalk.cyan(`${packageJson.name} [ver. ${packageJson.version}]`));
 log.info(`script: '${script}',`, 'args:', args);
