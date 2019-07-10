@@ -1,7 +1,9 @@
 process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 
-const { tools } = require('../utils/resolver');
+const {
+  tools,
+} = global.context;
 
 const npx = tools.require('utils/npx');
 const babelPreset = tools.resolve('utils/babel-preset-tools');

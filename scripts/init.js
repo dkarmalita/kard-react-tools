@@ -1,8 +1,8 @@
 const path = require('path');
 
-const { tools, target } = require('../utils/resolver');
-
-const log = tools.require('utils/logger');
+const {
+  tools, target, log,
+} = global.context;
 
 const shell = tools.require('shelljs');
 const pathExists = tools.require('path-exists');
@@ -17,8 +17,8 @@ module.exports = function main({ args }) {
 
   if (!targetFolderName) {
     log.error('projsct folder is not defined');
-    log.help('usage example:');
-    log.help('  react-tools init projectFolder [template]');
+    log.info('usage example:');
+    log.info('  react-tools init projectFolder [template]');
     process.exit(0);
   }
   const src = tools.fullPath(`templates/${templateName}`);
@@ -28,7 +28,7 @@ module.exports = function main({ args }) {
     .then((exist) => {
       if (!exist) {
         log.error(`template '${templateName}' doesn't exist`);
-        log.help('use an existing template or give no template name to use the default one');
+        log.info('use an existing template or give no template name to use the default one');
         process.exit(0);
       }
       return pathExists(dst);

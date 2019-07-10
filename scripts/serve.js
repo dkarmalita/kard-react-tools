@@ -1,10 +1,9 @@
 process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
 
-const { context } = global;
 const {
   tools, target, log, argv,
-} = context;
+} = global.context;
 
 const chalk = tools.require('chalk');
 const webpack = tools.require('webpack');
