@@ -10,11 +10,13 @@ const babelConfig = tools.require('babel.config')(tools.resolve);
 
 const isBuild = () => process.env.NODE_ENV === 'production';
 
+const entryPoints = config.entryPoints.map(el => target.path(el));
+
 const baseConfig = {
-  entry: config.entryPoints,
+  entry: entryPoints,
 
   output: {
-    path: config.distPath,
+    path: target.path(config.distPath),
     publicPath: '/',
     filename: 'bundle.js',
   },
@@ -35,23 +37,23 @@ const baseConfig = {
   module: {
     rules: [
 
-      //       // {
-      //       //   test: /\.(ts|tsx)?$/,
-      //       //   exclude: /node_modules/,
-      //       //   use: [
-      //       //     {
-      //       //       loader: babelLoader,
-      //       //       options: babelConfig,
-      //       //     },
-      //       //     {
-      //       //       loader: tsLoader,
-      //       //       options: {
-      //       //         transpileOnly: true,
-      //       //         configFileName: tools.resolve('tsconfig.json'),
-      //       //       },
-      //       //     },
-      //       //   ],
-      //       // },
+      // {
+      //   test: /\.(ts|tsx)?$/,
+      //   exclude: /node_modules/,
+      //   use: [
+      //     {
+      //       loader: babelLoader,
+      //       options: babelConfig,
+      //     },
+      //     {
+      //       loader: tsLoader,
+      //       options: {
+      //         transpileOnly: true,
+      //         configFileName: tools.resolve('tsconfig.json'),
+      //       },
+      //     },
+      //   ],
+      // },
 
       {
         test: /\.(js|jsx)$/,
@@ -137,12 +139,10 @@ const baseConfig = {
       'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) },
     }),
 
-    //   new webpack.HotModuleReplacementPlugin(),
-
     new plugins.HtmlWebpackPlugin({
       filename: 'index.html', // target name
       favid: Date.now(), // it is reffered in template and forced favicon get updated
-      template: config.indexHtmlTemplate,
+      template: target.path(config.indexHtmlTemplate),
       publicPath: '/',
       inject: 'body',
       minify: false, // ref: https://github.com/kangax/html-minifier#options-quick-reference
