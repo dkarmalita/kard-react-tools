@@ -16,7 +16,12 @@ function createResolver(basePath) {
       return basePath;
     },
 
+    // FIXME: remove the lagacy
     fullPath(rPath = '', ...rest) {
+      return path.join(this.basePath, rPath, ...rest);
+    },
+
+    path(rPath = '', ...rest) {
       return path.join(this.basePath, rPath, ...rest);
     },
 

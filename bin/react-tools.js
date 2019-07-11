@@ -17,7 +17,7 @@ log.info(chalk.cyan(`${packageJson.name} [ver. ${packageJson.version}]`));
 log.info(`script: '${script}',`, 'args:', args);
 
 const scripts = {
-  _dev: tools.require('scripts/_dev'),
+  // _dev: tools.require('scripts/_dev'),
   build: tools.require('scripts/build'),
   eslint: tools.require('scripts/eslint'),
   init: tools.require('scripts/init'),

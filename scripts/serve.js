@@ -9,7 +9,8 @@ const chalk = tools.require('chalk');
 const webpack = tools.require('webpack');
 const WebpackDevServer = tools.require('webpack-dev-server');
 
-const configFactory = tools.require('webpack.config');
+// const configFactory = tools.require('webpack.config');
+const configFactory = tools.require('config/webpack/dev');
 
 module.exports = () => configFactory(null, { mode: 'development' })
   .then((config) => {
