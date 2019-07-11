@@ -36,6 +36,7 @@ const makeResolveList = (els, acc = []) => {
 /**
  * combined resolve paths set based on the current project location (as tools, only the project
  * root and bellow are used) and the execution root (process.env.PWD as target)
+ * Note: Here we set a sequence and set of paths to use while resolving modules.
  * @type {Array}
  */
 const paths = [
@@ -54,7 +55,7 @@ const resolve = (fName) => {
 // require.main.paths = paths
 // console.log(require.main.paths);
 // console.log(paths);
-console.log(resolve('webpack'));
+// console.log(resolve('webpack'));
 console.log(require.resolve('webpack'));
 process.exit(0);
 
