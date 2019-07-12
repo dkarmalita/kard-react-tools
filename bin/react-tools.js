@@ -18,12 +18,13 @@ log.info(`script: '${script}',`, 'args:', args);
 
 const scripts = {
   // _dev: tools.require('scripts/_dev'),
-  build: tools.require('scripts/build'),
-  eslint: tools.require('scripts/eslint'),
-  init: tools.require('scripts/init'),
-  jest: tools.require('scripts/jest'),
-  serve: tools.require('scripts/serve'),
-  transpile: tools.require('scripts/transpile'),
+  build: () => tools.require('scripts/build'),
+  // buildA: () => tools.require('scripts/buildA'),
+  eslint: () => tools.require('scripts/eslint'),
+  init: () => tools.require('scripts/init'),
+  jest: () => tools.require('scripts/jest'),
+  serve: () => tools.require('scripts/serve'),
+  transpile: () => tools.require('scripts/transpile'),
 };
 
 if (!scripts[script]) {
@@ -33,4 +34,4 @@ if (!scripts[script]) {
   process.exit();
 }
 
-scripts[script]({ args });
+scripts[script]()({ args });

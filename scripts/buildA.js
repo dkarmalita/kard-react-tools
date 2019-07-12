@@ -6,19 +6,15 @@ const {
 } = global.context;
 
 const npx = tools.require('utils/npx');
-const configFilePath = tools.resolve('.eslintrc');
+const configFilePath = tools.resolve('webpack.config');
 
 // eslint-disable-next-line func-names
 module.exports = function ({ args } = { args: [] }) {
-  const app = tools.resolve('.bin/eslint');
+  const app = tools.resolve('.bin/webpack');
   return npx([
     app,
     '--config', configFilePath,
-    'src',
-    // '--ignore-path', '.gitignore',
-    '-f', 'table',
-    '--ext', '.js', '--ext', '.jsx',
-    // '--mode=production',
+    '--mode=production',
     ...args,
   ]);
 };

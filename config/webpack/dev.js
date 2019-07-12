@@ -1,24 +1,22 @@
-process.env.BABEL_ENV = 'development';
-process.env.NODE_ENV = 'development';
-
 const {
-  tools,
+  tools, config,
 } = global.context;
 
-// const fs = tools.require('fs');
-// const path = tools.require('path');
 const webpack = tools.require('webpack');
 
 const baseConfig = require('./base');
+
+baseConfig.mode = 'development';
 
 baseConfig.plugins.push(
   new webpack.HotModuleReplacementPlugin(),
 );
 
-// const loaders = require('./lib/loaders');
+baseConfig.devServer = {
+  contentBase: config.staticContentBase,
+  historyApiFallback: true,
+  hot: true,
+  compress: true,
+};
 
-// console.log(baseConfig);
-
-// process.exit(0);
-
-module.exports = () => new Promise(resolve => resolve(baseConfig))
+module.exports = () => new Promise(resolve => resolve(baseConfig));

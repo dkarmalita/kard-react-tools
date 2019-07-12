@@ -18,21 +18,14 @@ const baseConfig = {
   output: {
     path: target.path(config.distPath),
     publicPath: '/',
-    filename: 'bundle.js',
+    // filename: 'bundle.js',
   },
 
   mode: process.env.NODE_ENV,
 
   target: 'web',
 
-  stats: {
-    assets: true,
-    children: false,
-    chunks: false,
-    colors: true,
-    maxModules: 0,
-    modules: false,
-  },
+  stats: config.stats,
 
   module: {
     rules: [
@@ -66,13 +59,42 @@ const baseConfig = {
 
       {
         test: /\.module\.(css|scss)$/,
-        use: loaders.scssLoader({ modules: true, sourceMap: !isBuild() }), // FIXME
+        use: [
+          {
+            loader: plugins.MiniCssExtractPlugin.loader,
+            options: {
+            // you can specify a publicPath here
+            // by default it uses publicPath in webpackOptions.output
+              // publicPath: '../',
+              // hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          ...loaders.scssLoader({ sourceMap: !isBuild() }),
+        ],
       },
 
       {
         test: /\.(css|scss)$/,
         exclude: /\.module\.(css|scss)$/,
-        use: loaders.scssLoader({ sourceMap: !isBuild() }),
+        // sideEffects: true,
+        use: [
+          {
+            loader: plugins.MiniCssExtractPlugin.loader,
+            options: {
+              // publicPath: (resourcePath, context) => {
+              //   // publicPath is the relative path of the resource to the context
+              //   // e.g. for ./css/admin/main.css the publicPath will be ../../
+              //   // while for ./css/main.css the publicPath will be ../
+              //   return `${path.relative(path.dirname(resourcePath), context)}/`;
+              // },
+              // you can specify a publicPath here
+              // by default it uses publicPath in webpackOptions.output
+              // publicPath: '../',
+              // hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          ...loaders.scssLoader({ sourceMap: !isBuild() }),
+        ],
       },
 
       {
@@ -147,6 +169,13 @@ const baseConfig = {
       inject: 'body',
       minify: false, // ref: https://github.com/kangax/html-minifier#options-quick-reference
     }),
+
+    new plugins.MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
   ],
 
   resolve: {
@@ -173,10 +202,5 @@ const baseConfig = {
     },
   },
 };
-
-
-// console.log(loaders);
-// console.log(plugins);
-console.log(target.path('node_modules'));
 
 module.exports = baseConfig;

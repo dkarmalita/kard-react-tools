@@ -2,19 +2,21 @@ process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 
 const {
-  tools,
+  tools, log,
 } = global.context;
 
-const npx = tools.require('utils/npx');
-const configFilePath = tools.resolve('webpack.config');
+const webpack = tools.require('webpack');
+const configFactory = tools.require('config/webpack/prod');
 
-// eslint-disable-next-line func-names
-module.exports = function ({ args } = { args: [] }) {
-  const app = tools.resolve('.bin/webpack');
-  return npx([
-    app,
-    '--config', configFilePath,
-    '--mode=production',
-    ...args,
-  ]);
-};
+module.exports = () => configFactory(null, { mode: 'development' })
+  .then((config) => {
+    const compiler = webpack(config);
+    compiler.run((err, stats) => { // Stats Object
+      if (err) {
+        log.error(err);
+        return;
+      }
+
+      log.info(stats.toString(config.stats));
+    });
+  });

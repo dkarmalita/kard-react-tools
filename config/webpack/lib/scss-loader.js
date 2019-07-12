@@ -6,12 +6,12 @@ module.exports = ({
   modules = false,
   sourceMap = false,
 } = {}) => [
-  {
-    loader: tools.resolve('style-loader'),
-    options: {
-      sourceMap,
-    },
-  },
+  // {
+  //   loader: tools.resolve('style-loader'),
+  //   options: {
+  //     sourceMap,
+  //   },
+  // },
   {
     loader: tools.resolve('css-loader'),
     options: {

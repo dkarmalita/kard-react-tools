@@ -2,10 +2,12 @@ process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
 
 const {
-  tools, target, log, argv,
+  tools, log, argv, chalk,
 } = global.context;
 
-const chalk = tools.require('chalk');
+const globalConfig = global.context.config;
+
+// const chalk = tools.require('chalk');
 const webpack = tools.require('webpack');
 const WebpackDevServer = tools.require('webpack-dev-server');
 
@@ -14,23 +16,23 @@ const configFactory = tools.require('config/webpack/dev');
 
 module.exports = () => configFactory(null, { mode: 'development' })
   .then((config) => {
-    const devserverConfig = config.devServer || {};
-    const targetConfig = target.packageJson.devServer || {};
+    // const devserverConfig = config.devServer || {};
+    // const targetConfig = target.packageJson.devServer || {};
 
-    const host = argv.host || targetConfig.host || devserverConfig.host || '0.0.0.0';
-    const port = argv.port || targetConfig.port || devserverConfig.port || 3000;
+    const host = argv.host || globalConfig.host || '0.0.0.0';
+    const port = argv.port || globalConfig.port || 3000;
 
-    const stats = {
-      ...devserverConfig.stats,
-      ...targetConfig.stats,
-    };
+    // const stats = {
+    //   ...globalConfig.stats,
+    //   ...targetConfig.stats,
+    // };
 
     const options = {
       host,
       port,
-      stats,
-      ...devserverConfig,
-      ...targetConfig,
+      stats: globalConfig.stats,
+      // ...devserverConfig,
+      // ...targetConfig,
     };
 
     // Note: addDevServerEntrypoints should be called before webpack and new WebpackDevServer both.
