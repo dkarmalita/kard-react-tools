@@ -5,8 +5,8 @@ const {
   tools,
 } = global.context;
 
-const npx = tools.require('utils/npx');
-const babelPreset = tools.resolve('utils/babel-preset-tools');
+const npx = tools.require('lib/npx');
+const babelPreset = tools.resolve('lib/babel-preset');
 
 // eslint-disable-next-line func-names
 module.exports = function ({ args } = { args: [] }) {

@@ -6,7 +6,7 @@ const {
 } = global.context;
 
 const npx = tools.require('utils/npx');
-const configFilePath = tools.resolve('.eslintrc');
+const configFilePath = tools.resolve('config/eslint');
 
 // eslint-disable-next-line func-names
 module.exports = function ({ args } = { args: [] }) {

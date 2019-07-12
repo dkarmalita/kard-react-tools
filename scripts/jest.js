@@ -5,8 +5,8 @@ const {
   tools,
 } = global.context;
 
-const npx = tools.require('utils/npx');
-const configFilePath = tools.resolve('jest.config');
+const npx = tools.require('lib/npx');
+const configFilePath = tools.resolve('config/jest');
 
 // eslint-disable-next-line func-names
 module.exports = function ({ args } = { args: [] }) {

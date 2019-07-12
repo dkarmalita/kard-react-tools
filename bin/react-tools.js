@@ -19,7 +19,6 @@ log.info(`script: '${script}',`, 'args:', args);
 const scripts = {
   // _dev: tools.require('scripts/_dev'),
   build: () => tools.require('scripts/build'),
-  // buildA: () => tools.require('scripts/buildA'),
   eslint: () => tools.require('scripts/eslint'),
   init: () => tools.require('scripts/init'),
   jest: () => tools.require('scripts/jest'),

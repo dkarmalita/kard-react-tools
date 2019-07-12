@@ -2,21 +2,22 @@ const {
   tools,
 } = global.context;
 
+const MiniCssExtractPlugin = tools.require('mini-css-extract-plugin');
+
 module.exports = ({
   modules = false,
   sourceMap = false,
 } = {}) => [
-  // {
-  //   loader: tools.resolve('style-loader'),
-  //   options: {
-  //     sourceMap,
-  //   },
-  // },
+  {
+    loader: MiniCssExtractPlugin.loader,
+    options: {
+      // hmr: process.env.NODE_ENV === 'development',
+    },
+  },
   {
     loader: tools.resolve('css-loader'),
     options: {
       importLoaders: 1,
-      // url: false,
       modules,
       localIdentName: '[name]_[local]_[hash:base64:5]',
     },

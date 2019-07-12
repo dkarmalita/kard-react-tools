@@ -7,7 +7,6 @@ const {
 
 const globalConfig = global.context.config;
 
-// const chalk = tools.require('chalk');
 const webpack = tools.require('webpack');
 const WebpackDevServer = tools.require('webpack-dev-server');
 
@@ -16,23 +15,14 @@ const configFactory = tools.require('config/webpack/dev');
 
 module.exports = () => configFactory(null, { mode: 'development' })
   .then((config) => {
-    // const devserverConfig = config.devServer || {};
-    // const targetConfig = target.packageJson.devServer || {};
 
     const host = argv.host || globalConfig.host || '0.0.0.0';
     const port = argv.port || globalConfig.port || 3000;
-
-    // const stats = {
-    //   ...globalConfig.stats,
-    //   ...targetConfig.stats,
-    // };
 
     const options = {
       host,
       port,
       stats: globalConfig.stats,
-      // ...devserverConfig,
-      // ...targetConfig,
     };
 
     // Note: addDevServerEntrypoints should be called before webpack and new WebpackDevServer both.

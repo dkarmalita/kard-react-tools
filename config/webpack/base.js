@@ -6,7 +6,7 @@ const webpack = tools.require('webpack');
 
 const { loaders, plugins } = require('./lib');
 
-const babelConfig = tools.require('babel.config')(tools.resolve);
+const babelConfig = tools.require('config/babel')(tools.resolve);
 
 const isBuild = () => process.env.NODE_ENV === 'production';
 
@@ -18,7 +18,6 @@ const baseConfig = {
   output: {
     path: target.path(config.distPath),
     publicPath: '/',
-    // filename: 'bundle.js',
   },
 
   mode: process.env.NODE_ENV,
@@ -59,42 +58,19 @@ const baseConfig = {
 
       {
         test: /\.module\.(css|scss)$/,
-        use: [
-          {
-            loader: plugins.MiniCssExtractPlugin.loader,
-            options: {
-            // you can specify a publicPath here
-            // by default it uses publicPath in webpackOptions.output
-              // publicPath: '../',
-              // hmr: process.env.NODE_ENV === 'development',
-            },
-          },
-          ...loaders.scssLoader({ sourceMap: !isBuild() }),
-        ],
+        use: loaders.scssLoader({
+          sourceMap: !isBuild(),
+          modules: true
+        }),
       },
 
       {
         test: /\.(css|scss)$/,
         exclude: /\.module\.(css|scss)$/,
         // sideEffects: true,
-        use: [
-          {
-            loader: plugins.MiniCssExtractPlugin.loader,
-            options: {
-              // publicPath: (resourcePath, context) => {
-              //   // publicPath is the relative path of the resource to the context
-              //   // e.g. for ./css/admin/main.css the publicPath will be ../../
-              //   // while for ./css/main.css the publicPath will be ../
-              //   return `${path.relative(path.dirname(resourcePath), context)}/`;
-              // },
-              // you can specify a publicPath here
-              // by default it uses publicPath in webpackOptions.output
-              // publicPath: '../',
-              // hmr: process.env.NODE_ENV === 'development',
-            },
-          },
-          ...loaders.scssLoader({ sourceMap: !isBuild() }),
-        ],
+        use: loaders.scssLoader({
+          sourceMap: !isBuild()
+        }),
       },
 
       {
