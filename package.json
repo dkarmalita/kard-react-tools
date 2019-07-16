@@ -1,7 +1,7 @@
 {
   "name": "@kard/react-tools",
   "logid": "@kard/rdt",
-  "version": "0.3.0-alpha.02",
+  "version": "0.3.0-alpha.03",
   "description": "",
   "main": "bin/react-tools.js",
   "bin": {
@@ -28,7 +28,11 @@
       "colors": true,
       "maxModules": 0,
       "modules": false
-    }
+    },
+    "lintIgnore": [
+      ".gitignore",
+      ".eslintignore"
+    ]
   },
   "keywords": [],
   "author": "",

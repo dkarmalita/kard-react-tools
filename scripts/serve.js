@@ -15,7 +15,6 @@ const configFactory = tools.require('config/webpack/dev');
 
 module.exports = () => configFactory(null, { mode: 'development' })
   .then((config) => {
-
     const host = argv.host || globalConfig.host || '0.0.0.0';
     const port = argv.port || globalConfig.port || 3000;
 
