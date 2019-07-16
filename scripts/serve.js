@@ -19,9 +19,9 @@ module.exports = () => configFactory(null, { mode: 'development' })
     const port = argv.port || globalConfig.port || 3000;
 
     const options = {
+      ...config.devServer,
       host,
       port,
-      contentBase: globalConfig.staticContentBase,
       stats: globalConfig.stats,
     };
 
