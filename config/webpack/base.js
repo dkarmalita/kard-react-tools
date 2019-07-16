@@ -29,23 +29,23 @@ const baseConfig = {
   module: {
     rules: [
 
-      // {
-      //   test: /\.(ts|tsx)?$/,
-      //   exclude: /node_modules/,
-      //   use: [
-      //     {
-      //       loader: babelLoader,
-      //       options: babelConfig,
-      //     },
-      //     {
-      //       loader: tsLoader,
-      //       options: {
-      //         transpileOnly: true,
-      //         configFileName: tools.resolve('tsconfig.json'),
-      //       },
-      //     },
-      //   ],
-      // },
+      {
+        test: /\.(ts|tsx)?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: loaders.babelLoader,
+            options: babelConfig,
+          },
+          {
+            loader: loaders.tsLoader,
+            options: {
+              transpileOnly: true,
+              configFile: tools.resolve('config/tsrc.json'),
+            },
+          },
+        ],
+      },
 
       {
         test: /\.(js|jsx)$/,
@@ -60,7 +60,7 @@ const baseConfig = {
         test: /\.module\.(css|scss)$/,
         use: loaders.scssLoader({
           sourceMap: !isBuild(),
-          modules: true
+          modules: true,
         }),
       },
 
@@ -69,7 +69,7 @@ const baseConfig = {
         exclude: /\.module\.(css|scss)$/,
         // sideEffects: true,
         use: loaders.scssLoader({
-          sourceMap: !isBuild()
+          sourceMap: !isBuild(),
         }),
       },
 
@@ -134,7 +134,9 @@ const baseConfig = {
   plugins: [
 
     new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) },
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
     }),
 
     new plugins.HtmlWebpackPlugin({
@@ -157,7 +159,7 @@ const baseConfig = {
   resolve: {
     extensions: [
       // '*',
-      // '.ts', '.tsx',
+      '.ts', '.tsx',
       '.js', '.jsx', '.scss',
     ],
 

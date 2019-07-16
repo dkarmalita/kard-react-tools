@@ -4,7 +4,7 @@ process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 
 const {
-  tools, target, config,
+  tools, target, config, argv,
 } = global.context;
 
 const npx = tools.require('utils/npx');
@@ -17,8 +17,7 @@ module.exports = function ({ args } = { args: [] }) {
   // base eslint args to use
   const baseArgs = [
     '--config', configFilePath,
-    'src',
-    // '--ignore-path', '.gitignore',
+    argv.lintSource || config.lintSource,
     '-f', 'table',
     '--ext', '.js', '--ext', '.jsx',
   ];
@@ -40,6 +39,12 @@ module.exports = function ({ args } = { args: [] }) {
     baseArgs.push('--ignore-path');
     baseArgs.push(ignoreFileSelected);
   }
+
+  const lsIndex = args.indexOf('--lintSource');
+  if (lsIndex > -1) {
+    args.splice(lsIndex, 2);
+  }
+  // console.log(args)
 
   // run eslint
   return npx([

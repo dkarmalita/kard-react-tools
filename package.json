@@ -8,7 +8,8 @@
     "react-tools": "bin/react-tools.js"
   },
   "scripts": {
-    "esfix": "eslint . --ignore-path .gitignore --ignore-path .eslintignore -f table --ext .js --ext .jsx --fix",
+    "~esfix": "eslint . --config ./config/eslint.js --ignore-path .gitignore --ignore-path .eslintignore -f table --ext .js --ext .jsx --fix",
+    "esfix": "./bin/react-tools.js eslint --lintSource . --fix",
     "publish": "npm publish --access public",
     "test": "jest"
   },
@@ -32,7 +33,8 @@
     "lintIgnore": [
       ".gitignore",
       ".eslintignore"
-    ]
+    ],
+    "lintSource": "src"
   },
   "keywords": [],
   "author": "",

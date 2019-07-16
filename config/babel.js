@@ -1,7 +1,7 @@
 require('../lib/context');
 
 const {
-  tools, log,
+  tools,
 } = global.context;
 
 module.exports = (api) => {
