@@ -19,7 +19,10 @@ module.exports = function ({ args } = { args: [] }) {
     '--config', configFilePath,
     argv.lintSource || config.lintSource,
     '-f', 'table',
-    '--ext', '.js', '--ext', '.jsx',
+    '--ext', '.js',
+    '--ext', '.jsx',
+    '--ext', '.ts',
+    '--ext', '.tsx',
   ];
 
   // if lintIgnore array exist, select the latest existiong
