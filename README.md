@@ -1,3 +1,7 @@
+## Tips
+
+Look into the `package.json` to get ideas about local (in-project) config.
+
 ## backlog
 
 `#kard-react-tools #backlog` in nvAlt
