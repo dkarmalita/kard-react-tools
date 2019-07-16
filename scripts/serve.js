@@ -21,6 +21,7 @@ module.exports = () => configFactory(null, { mode: 'development' })
     const options = {
       host,
       port,
+      contentBase: globalConfig.staticContentBase,
       stats: globalConfig.stats,
     };
 
