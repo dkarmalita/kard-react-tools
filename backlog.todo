@@ -1,13 +1,16 @@
+ ✔ [fix][eslint] remove .gitignore absence error @done (19-07-19 12:15)
+ ✔ [improve] simplify webpack.config @done (19-07-19 12:13)
+ ✔ [add] typescript support to webpack @done (19-07-19 12:15)
+ ✔ [add] project-wide config (in package.json) @done (19-07-19 12:16)
+ ☐ [add] typescript support to transpile
+ ☐ [add] ts linting
+ ☐ [add] project-wide config (in tools.config.js)
  ☐ [add][stylelint] stylelint
- ☐ [improve] simplify webpack.config
+
  ☐ [doc] readme
- ☐ [add] project-wide config (in package.json or tools.config)
  ☐ [insure] browserlist is supported by all of the tools
  ☐ [add] sass transpiling script
  ☐ [improve] add 'files' field to package.json
  ☐ [add][init] init script (tamplate population)
- ☐ [fix][eslint] remove .gitignore absence error
  ☐ [add] templates config
  ☐ [add] templates post-copy process (npm i, package.json update)
- ☐ [add] typescript support to transpile
- ☐ [add] typescript support to webpack
