@@ -17,6 +17,7 @@
     "entryPoints": [
       "src/index.jsx"
     ],
+    "srcPath": "src",
     "distPath": "dist",
     "indexHtmlTemplate": "src/index.ejs",
     "staticContentBase": "static",

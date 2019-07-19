@@ -2,14 +2,16 @@
  ✔ [improve] simplify webpack.config @done (19-07-19 12:13)
  ✔ [add] typescript support to webpack @done (19-07-19 12:15)
  ✔ [add] project-wide config (in package.json) @done (19-07-19 12:16)
- ☐ [add] typescript support to transpile
- ☐ [add] ts linting
- ☐ [add] project-wide config (in tools.config.js)
+ ✔ [add] typescript support to transpile @done (19-07-19 18:53)
+ ✔ [add] ts linting @done (19-07-19 18:53)
+ ☐ [add] sass transpiling script
  ☐ [add][stylelint] stylelint
+   ref: https://www.master-web.info/kak-lintovat-vash-sass-css-stylelint/
+
+ ☐ [add] project-wide config (in tools.config.js)
 
  ☐ [doc] readme
  ☐ [insure] browserlist is supported by all of the tools
- ☐ [add] sass transpiling script
  ☐ [improve] add 'files' field to package.json
  ☐ [add][init] init script (tamplate population)
  ☐ [add] templates config

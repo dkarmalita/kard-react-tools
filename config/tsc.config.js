@@ -4,11 +4,11 @@ const fs = require('fs');
 const rimraf = require('rimraf');
 
 const {
-  tools, target,
+  tools, target, config,
 } = global.context;
 
-const srcDir = target.path('src');
-const outDir = target.path('lib');
+const srcDir = target.path(config.srcPath);
+const outDir = target.path(config.distPath);
 const tsconfigPath = tools.path('tsconfig.tmp.json');
 
 const tsConfig = {
