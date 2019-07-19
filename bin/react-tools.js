@@ -24,6 +24,8 @@ const scripts = {
   jest: () => tools.require('scripts/jest'),
   serve: () => tools.require('scripts/serve'),
   transpile: () => tools.require('scripts/transpile'),
+  tsc: () => tools.require('scripts/tsc'),
+  tslint: () => tools.require('scripts/tslint'),
 };
 
 if (!scripts[script]) {

@@ -41,7 +41,7 @@ const baseConfig = {
             loader: loaders.tsLoader,
             options: {
               // transpileOnly: true,
-              configFile: tools.resolve('config/tsrc.json'),
+              configFile: tools.resolve('config/tsconfig.json'),
             },
           },
 

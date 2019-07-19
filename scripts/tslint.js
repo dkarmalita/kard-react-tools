@@ -8,19 +8,22 @@ const {
 } = global.context;
 
 const npx = tools.require('utils/npx');
-const configFilePath = tools.resolve('config/eslint');
+const configFilePath = tools.resolve('config/tslint');
 
 // eslint-disable-next-line func-names
 module.exports = function ({ args } = { args: [] }) {
-  const app = tools.resolve('.bin/eslint');
+  const app = tools.resolve('.bin/tslint');
 
   // base eslint args to use
   const baseArgs = [
     '--config', configFilePath,
-    argv.lintSource || config.lintSource,
-    '-f', 'stylish',
-    '--ext', '.js',
-    '--ext', '.jsx',
+    `${argv.lintSource || config.lintSource}/**/*.ts`,
+    `${argv.lintSource || config.lintSource}/**/*.tsx`,
+    '--format', 'stylish', // codeFrame
+    // argv.lintSource || config.lintSource,
+    // // '-f', 'table',
+    // '--ext', '.ts',
+    // '--ext', '.tsx',
   ];
 
   // if lintIgnore array exist, select the latest existiong
@@ -37,14 +40,15 @@ module.exports = function ({ args } = { args: [] }) {
   }
 
   if (ignoreFileSelected) {
-    baseArgs.push('--ignore-path');
+    baseArgs.push('--exclude');
     baseArgs.push(ignoreFileSelected);
   }
 
-  const lsIndex = args.indexOf('--lintSource');
-  if (lsIndex > -1) {
-    args.splice(lsIndex, 2);
-  }
+  // const lsIndex = args.indexOf('--lintSource');
+  // if (lsIndex > -1) {
+  //   args.splice(lsIndex, 2);
+  // }
+
   // console.log(args)
 
   // run eslint
