@@ -5,9 +5,9 @@
  ✔ [add] typescript support to transpile @done (19-07-19 18:53)
  ✔ [add] ts linting @done (19-07-19 18:53)
  ✔ [add][stylelint] stylelint @done (19-07-20 00:47)
- ☐ [add] sass transpiling script
-   ref: https://www.master-web.info/kak-lintovat-vash-sass-css-stylelint/
+ ✔ [add] sass transpiling script @done (19-07-20 01:24)
 
+ ☐ [review][transpile] make it support config
  ☐ [add] project-wide config (in tools.config.js)
  ☐ [replace] lintSource -> srcPath
 

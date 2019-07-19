@@ -1,7 +1,6 @@
 // tsconfig for tsc (ts compile / transpile)
 
 const fs = require('fs');
-const rimraf = require('rimraf');
 
 const {
   tools, target, config,
@@ -34,8 +33,6 @@ const tsConfig = {
     srcDir,
   ],
 };
-
-rimraf.sync(outDir);
 
 fs.writeFileSync(
   tsconfigPath,

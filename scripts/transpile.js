@@ -14,7 +14,8 @@ module.exports = function ({ args } = { args: [] }) {
   return npx([
     app,
     '--no-babelrc',
-    'src', '-d', 'dist',
+    'src',
+    '-d', 'dist',
     `--presets=${babelPreset}`,
     // '--source-maps', 'inline',
     // '--copy-files',
