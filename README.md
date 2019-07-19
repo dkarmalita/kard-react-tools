@@ -33,19 +33,16 @@ in test app folder
 
 ## NPM scripts
 
-`"start": "react-tools serve"`
-
-`"build": "react-tools build"`
-
-`"eslint": "react-tools eslint"`
-
-`"esfix": "react-tools eslint --fix"`
-
-`"transpile": "react-tools transpile --watch"`
-
-`"test": "react-tools jest"`
-
-`"jest:config": "react-tools jest --showConfig"`
+    "build": "react-tools build",
+    "esfix": "react-tools eslint --fix",
+    "eslint": "react-tools eslint",
+    "jest:config": "react-tools jest --showConfig",
+    "start": "react-tools serve",
+    "test": "react-tools jest",
+    "transpile": "react-tools transpile --watch",
+    "tsc": "react-tools tsc --allowJs --watch",
+    "tsfix": "react-tools tslint --fix",
+    "tslint": "react-tools tslint"
 
 ## package.json config fields
 
