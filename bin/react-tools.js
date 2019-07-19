@@ -23,6 +23,7 @@ const scripts = {
   init: () => tools.require('scripts/init'),
   jest: () => tools.require('scripts/jest'),
   serve: () => tools.require('scripts/serve'),
+  stylelint: () => tools.require('scripts/stylelint'),
   transpile: () => tools.require('scripts/transpile'),
   tsc: () => tools.require('scripts/tsc'),
   tslint: () => tools.require('scripts/tslint'),

@@ -4,11 +4,12 @@
  ✔ [add] project-wide config (in package.json) @done (19-07-19 12:16)
  ✔ [add] typescript support to transpile @done (19-07-19 18:53)
  ✔ [add] ts linting @done (19-07-19 18:53)
+ ✔ [add][stylelint] stylelint @done (19-07-20 00:47)
  ☐ [add] sass transpiling script
- ☐ [add][stylelint] stylelint
    ref: https://www.master-web.info/kak-lintovat-vash-sass-css-stylelint/
 
  ☐ [add] project-wide config (in tools.config.js)
+ ☐ [replace] lintSource -> srcPath
 
  ☐ [doc] readme
  ☐ [insure] browserlist is supported by all of the tools
