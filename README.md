@@ -37,6 +37,7 @@ in test app folder
     "esfix": "react-tools eslint --fix",
     "eslint": "react-tools eslint",
     "jest:config": "react-tools jest --showConfig",
+    "stylelint": "react-tools stylelint --fix",
     "start": "react-tools serve",
     "test": "react-tools jest",
     "transpile": "react-tools transpile --watch",
