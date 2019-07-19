@@ -30,7 +30,7 @@ const baseConfig = {
     rules: [
 
       {
-        test: /\.(ts|tsx)?$/,
+        test: /\.ts(x?)$/,
         exclude: /node_modules/,
         use: [
           {
@@ -40,10 +40,18 @@ const baseConfig = {
           {
             loader: loaders.tsLoader,
             options: {
-              transpileOnly: true,
+              // transpileOnly: true,
               configFile: tools.resolve('config/tsrc.json'),
             },
           },
+
+          // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+          // ref: https://www.typescriptlang.org/docs/handbook/react-&-webpack.html
+          // {
+          //     enforce: "pre",
+          //     test: /\.js$/,
+          //     loader: "source-map-loader"
+          // }
         ],
       },
 
