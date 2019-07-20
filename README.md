@@ -38,7 +38,7 @@ in test app folder
     "eslint": "react-tools eslint",
     "jest:config": "react-tools jest --showConfig",
     "rimraf": "react-tools rimraf",
-    "scss": "react-tools scss --watch",
+    "sass": "react-tools sass --watch",
     "start": "react-tools serve",
     "stylelint": "react-tools stylelint --fix",
     "test": "react-tools jest",
