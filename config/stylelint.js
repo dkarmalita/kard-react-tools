@@ -1,4 +1,5 @@
-
+// stylelint-config-standard
+// ref: https://itrader.ptscrm.com/index.php?action=index&module=Accounts&just_logged
 
 module.exports = {
   extends: 'stylelint-config-recommended',
