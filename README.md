@@ -53,6 +53,10 @@ in test app folder
 * css/scss/sass (webpack/transpile/stylelint)
 * typescript (webpack/transpile/airbnb tslint)
 
+## Examples
+
+    react-tools eslint --lintSource . --fix
+
 ## package.json config fields
 
 `logid` - id string used in the log. While it is not set, `name` will be used instead.

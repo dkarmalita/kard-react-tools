@@ -33,8 +33,8 @@ const scripts = {
 
 if (!scripts[script]) {
   log.error('Unknown script:', chalk.cyan(`${script}`));
-  log.help('Avaliable scripts:');
-  log.help(Object.keys(scripts).join(', '));
+  log.info('Avaliable scripts:');
+  log.info(Object.keys(scripts).join(', '));
   process.exit();
 }
 
