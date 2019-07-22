@@ -47,6 +47,12 @@ in test app folder
     "tsfix": "react-tools tslint --fix",
     "tslint": "react-tools tslint"
 
+## Features
+
+* js (webpack/transpile/airbnb eslint)
+* css/scss/sass (webpack/transpile/stylelint)
+* typescript (webpack/transpile/airbnb tslint)
+
 ## package.json config fields
 
 `logid` - id string used in the log. While it is not set, `name` will be used instead.
