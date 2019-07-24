@@ -16,7 +16,20 @@
   },
     "interface-name": false,
     "no-boolean-literal-compare": false,
-    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"],
-    "import-name": [false, "ban-keywords", "check-format", "allow-pascal-case"]
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case",
+      "allow-leading-underscore",
+      "allow-trailing-underscore"
+    ],
+    "import-name": [
+      true,
+      {
+        "react": "React",
+        "reactDom": "ReactDOM"
+      }
+    ]
   }
 }
