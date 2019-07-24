@@ -65,7 +65,8 @@ const tsConfig = {
     '**/*.js',
     '**/*.jsx',
   ],
-  rootDir: '/Users/kard/Desktop/react-tools-tmp-target/test01',
+
+  // rootDir: '/Users/kard/Desktop/react-tools-tmp-target/test01',
   include: [
     srcDir,
   ],

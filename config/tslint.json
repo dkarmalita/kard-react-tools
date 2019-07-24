@@ -11,11 +11,12 @@
       "options": [120]
     },
     "no-console": {
-        "severity": "warning",
-        "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
-    },
+      "severity": "warning",
+      "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
+  },
     "interface-name": false,
     "no-boolean-literal-compare": false,
-    "variable-name": [ "allow-pascal-case" ]
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"],
+    "import-name": [false, "ban-keywords", "check-format", "allow-pascal-case"]
   }
 }
