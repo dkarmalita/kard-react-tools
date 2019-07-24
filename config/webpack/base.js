@@ -12,6 +12,8 @@ const isBuild = () => process.env.NODE_ENV === 'production';
 
 const entryPoints = config.entryPoints.map(el => target.path(el));
 
+// console.log(tools.resolve('config/tsconfig.json'))
+
 const baseConfig = {
   entry: entryPoints,
 
@@ -41,7 +43,8 @@ const baseConfig = {
             loader: loaders.tsLoader,
             options: {
               // transpileOnly: true,
-              configFile: tools.resolve('config/tsconfig.json'),
+              // configFile: tools.resolve('config/tsconfig.json'),
+              configFile: tools.require('config/tsc.config.js')(),
             },
           },
 
