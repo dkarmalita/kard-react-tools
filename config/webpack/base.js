@@ -12,8 +12,6 @@ const isBuild = () => process.env.NODE_ENV === 'production';
 
 const entryPoints = config.entryPoints.map(el => target.path(el));
 
-// console.log(tools.resolve('config/tsconfig.json'))
-
 const baseConfig = {
   entry: entryPoints,
 
