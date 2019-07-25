@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-const App = () => {
-  return (
-    <div>
-      <p>Hello world!</p>
-    </div>
-  );
-};
+import './scss';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+import Hello from "./Hello";
+
+ReactDOM.render(
+    <Hello compiler='TypeScript' framework='React' />,
+    document.getElementById('app')
+);
