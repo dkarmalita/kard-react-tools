@@ -1,2 +1,32 @@
-*.bak
-*.bak.*
+# Generated folders and files
+**/.log
+**/.sass-cache
+**/.tmp
+**/bower_components
+**/complexity
+**/coverage
+**/design.doc.json
+**/dist
+**/node_modules
+**/npm-debug.log
+**/packages
+**/quality
+**/reports
+
+# Temporary and backup patterns
+**/*.bak
+**/*.bak.*
+**/*.tmp
+**/*.tmp.*
+**/tmp
+**/_tmp
+
+# Git
+**/*.orig
+
+# IntelliJ IDEA / WebStorm
+**/*.iml
+**/*.idea
+
+# MacOS
+**/.DS_Store
