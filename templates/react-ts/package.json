@@ -1,24 +1,38 @@
 {
-  "name": "CSSTransitionGroup",
+  "name": "kard-react-ts-tamplate",
   "version": "0.1.0",
-  "description": "",
+  "description": "typescript enabled react project",
   "main": "index.js",
   "scripts": {
-    "start": "react-tools serve",
     "build": "react-tools build",
-    "eslint": "react-tools eslint",
     "esfix": "react-tools eslint --fix",
-    "transpile": "react-tools transpile --watch",
+    "eslint": "react-tools eslint",
+    "~jest:config": "react-tools jest --showConfig",
+    "rimraf": "react-tools rimraf",
+    "sass": "react-tools sass --watch",
+    "start": "react-tools serve",
+    "stylelint": "react-tools stylelint --fix",
     "test": "react-tools jest",
-    "jest:config": "react-tools jest --showConfig"
+    "transpile": "react-tools transpile --watch",
+    "tsc": "react-tools tsc --allowJs --watch",
+    "tsfix": "react-tools tslint --fix",
+    "tslint": "react-tools tslint"
+  },
+  "devConfig": {
+    "entryPoints": [
+      "src/index.tsx"
+    ]
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@kard/react-tools": "^0.2.3"
+    "@kard/react-tools": "^0.2.3",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.5"
   },
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   }
