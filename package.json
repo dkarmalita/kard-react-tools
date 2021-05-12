@@ -50,7 +50,7 @@
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
     "path-exists": "^3.0.0",
-    "postcss": "^7.0.14",
+    "postcss": "^8.2.10",
     "postcss-easy-import": "^3.0.0",
     "postcss-loader": "^3.0.0",
     "regenerator-runtime": "^0.13.1",
